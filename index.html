@@ -19,7 +19,7 @@
     text-transform: lowercase;
   }
   .maintained { color: #666; margin-bottom: 28px; }
-  .clock { color: #666; margin: -20px 0 28px; }
+  .clock { color: #666; margin: 0 0 8px; }
   ul { list-style: none; padding: 0; margin: 8px 0 20px; }
   li { margin: 4px 0; }
   a { color: #0645ad; text-decoration: none; }
@@ -37,7 +37,7 @@
 </head>
 <body>
 
-<p class="maintained">by kj (kshitij jaggi | <a href="https://www.linkedin.com/in/kshitijjaggi/">linkedin</a> | <a href="https://x.com/kshitijjaggi">x</a> | <a href="mailto:kj@risalabs.ai">kj@risalabs.ai</a>)</p>
+
 
 <p class="clock" id="clock"></p>
 
@@ -66,18 +66,19 @@
     var Jset = J2000 + dsSet + 0.0053 * Math.sin(M) - 0.0069 * Math.sin(2 * L);
     return fromJulian(Jnoon - (Jset - Jnoon));
   }
-  var dateFmt = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  var dateFmt = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, day: '2-digit', month: '2-digit', year: '2-digit' });
   var timeFmt = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
   var riseFmt = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   var el = document.getElementById('clock');
   function tick() {
     var now = new Date();
-    el.textContent = 'palo alto, california — ' + dateFmt.format(now) + ' — ' + timeFmt.format(now) + ' — sunrise ' + riseFmt.format(sunrise(now));
+    el.textContent = '☀︎' + riseFmt.format(sunrise(now)) + ' · ' + timeFmt.format(now) + ' · ' + dateFmt.format(now).replace(/\//g, '.') + ' · palo alto, ca';
   }
   tick();
   setInterval(tick, 1000);
 })();
 </script>
+  <p class="maintained">by kj (kshitij jaggi | <a href="https://www.linkedin.com/in/kshitijjaggi/">linkedin</a> | <a href="https://x.com/kshitijjaggi">x</a> | <a href="mailto:kj@risalabs.ai">kj@risalabs.ai</a>)</p>
 
 <h2><b>vvvimp</b> (very very very important) to solve with max urgency</h2>
 
